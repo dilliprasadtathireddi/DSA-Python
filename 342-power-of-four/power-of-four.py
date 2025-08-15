@@ -7,4 +7,4 @@ class Solution:
             elif (4**x) > n:
                 return False
             x += 1 
-        return False
+        
