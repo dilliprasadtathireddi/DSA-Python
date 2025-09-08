@@ -6,7 +6,7 @@ class Solution:
         maxLen = 0
         while r < len(fruits):
             hashMap[fruits[r]] = hashMap.get(fruits[r], 0) + 1
-            while len(hashMap) > 2:
+            if len(hashMap) > 2:
                 hashMap[fruits[l]] -= 1
                 if hashMap[fruits[l]] == 0:
                     del hashMap[fruits[l]]
