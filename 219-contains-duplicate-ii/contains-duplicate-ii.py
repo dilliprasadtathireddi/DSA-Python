@@ -5,5 +5,8 @@ class Solution:
             if nums[i] in hashMap:
                 if abs(i - hashMap[nums[i]]) <= k:
                     return True
+                
             hashMap[nums[i]] = i
+            if len(hashMap) >k:
+                del hashMap[nums[i-k]]
         return False
