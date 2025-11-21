@@ -4,10 +4,8 @@ class Solution:
         if totalSum % 2:
             return False
         target = totalSum // 2
-        #dp = [[False for _ in range(target + 1)] for _ in range(len(nums))]
         prev = [False] * (target + 1)
-        
-        prev[0] = True
+        if(nums[0] <= target):prev[0] = True
         
         if(nums[0]<=target):
             prev[nums[0]] = True
