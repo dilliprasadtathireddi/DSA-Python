@@ -6,7 +6,9 @@ class Solution:
             if i < 0:
                 out.append(arr[:])
                 return
-            pick = helper(i-1, arr + [nums[i]], out)
+            arr.append(nums[i])
+            pick = helper(i-1, arr, out)
+            arr.pop()
             not_pick = helper(i-1, arr, out)
         helper(n-1, [], out)
         return out
