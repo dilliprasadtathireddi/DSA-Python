@@ -5,13 +5,14 @@ class Solution:
             return nums[0]
         if(lengthArr == 2):
             return max(nums[0], nums[1])
-        dp = [0 for _ in range(lengthArr)]
-        dp[0] = nums[0]
-        dp[1] = max(nums[0], nums[1])
+        prev2 = nums[0]
+        prev1 = max(nums[0], nums[1])
         for ind in range(2, lengthArr):
             #convert reccurence into iteration
-            pick = nums[ind] + dp[ind-2]
-            notPick = dp[ind-1]
-            dp[ind] = max(pick, notPick)
-        return dp[lengthArr-1]
+            pick = nums[ind] + prev2
+            notPick = prev1
+            cur = max(pick, notPick)
+            prev2 = prev1
+            prev1 = cur
+        return prev1
         
