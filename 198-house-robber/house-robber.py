@@ -1,16 +1,16 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        n = len(nums)
-        dp = [-1] * (n)
-        def helper(i, nums, dp):
-            if i == 0:
+        def backtrack(ind, dp):
+            # ====base cases====
+            if(ind == 0):
                 return nums[0]
-            if i == 1:
+            if(ind == 1):
                 return max(nums[0], nums[1])
-            if dp[i] != -1:
-                return dp[i]
-            pick = nums[i] + helper(i-2, nums, dp)
-            not_pick = helper(i-1, nums, dp)
-            dp[i] = max(pick, not_pick)
-            return dp[i]
-        return helper(n-1, nums, dp)
+            if(dp[ind]!=-1):
+                return dp[ind]
+            pick = nums[ind] + backtrack(ind - 2, dp)
+            notPick = backtrack(ind-1, dp)
+            dp[ind] = max(pick, notPick)
+            return dp[ind]
+        dp = [-1 for _ in range(len(nums))]
+        return backtrack(len(nums)-1, dp)
