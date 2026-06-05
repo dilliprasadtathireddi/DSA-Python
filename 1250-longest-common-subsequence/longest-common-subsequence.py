@@ -2,7 +2,7 @@ class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
         m = len(text1)
         n = len(text2)
-        dp = [[-1 for _ in range(n+1)] for _ in range(m+1)]
+        dp = [[-1 for _ in range(n)] for _ in range(m)]
         def helper(i , j, dp):
             if(i < 0 or j <0):
                 return 0
